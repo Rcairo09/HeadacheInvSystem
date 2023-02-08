@@ -51,6 +51,50 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/lenovo/Documents/PROYECTOS VISUAL/HeadacheInvSystem/Views/Kardexs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2FyZGV4c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Documents/PROYECTOS VISUAL/HeadacheInvSystem/Views/Kardexs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2FyZGV4c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Documents/PROYECTOS VISUAL/HeadacheInvSystem/Views/Kardexs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2FyZGV4c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Documents/PROYECTOS VISUAL/HeadacheInvSystem/Views/Kardexs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2FyZGV4c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Documents/PROYECTOS VISUAL/HeadacheInvSystem/Views/Kardexs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2FyZGV4c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Documents/PROYECTOS VISUAL/HeadacheInvSystem/Views/OrdenVentas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZW5WZW50YXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Documents/PROYECTOS VISUAL/HeadacheInvSystem/Views/OrdenVentas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZW5WZW50YXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Documents/PROYECTOS VISUAL/HeadacheInvSystem/Views/OrdenVentas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZW5WZW50YXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Documents/PROYECTOS VISUAL/HeadacheInvSystem/Views/OrdenVentas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZW5WZW50YXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Documents/PROYECTOS VISUAL/HeadacheInvSystem/Views/OrdenVentas/ErrorVistaOrden.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZW5WZW50YXNcRXJyb3JWaXN0YU9yZGVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Documents/PROYECTOS VISUAL/HeadacheInvSystem/Views/OrdenVentas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZW5WZW50YXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/lenovo/Documents/PROYECTOS VISUAL/HeadacheInvSystem/Views/Productos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

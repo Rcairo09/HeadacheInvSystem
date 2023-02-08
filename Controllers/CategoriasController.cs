@@ -56,7 +56,7 @@ namespace HeadacheInvSystem.Controllers
         public async Task<IActionResult> Create(CategoriasSP c)
         {
             await _context.Database.ExecuteSqlInterpolatedAsync($"EXEC Entrada.Categorias {c.NombreCategoria}, {c.Descripcion}");
-            if (_context.Categoria.Any(x => x.NombreCategoria == c.NombreCategoria && x.Descripcion == c.Descripcion))
+            if (_context.Categoria.Any(x => x.NombreCategoria == c.NombreCategoria))
             {
                 ViewData["ErrorMessage"] = "El elemento ya existe";
                 return View("VistaErrorCategorias");
