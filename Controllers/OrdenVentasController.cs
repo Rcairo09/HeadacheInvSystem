@@ -62,7 +62,7 @@ namespace HeadacheInvSystem.Controllers
             if (producto.Existencias < o.Unidades)
             {
                 ViewData["ErrorMessage"] = "No hay suficientes unidades de este producto, para realizar la compra, solo hay: " + producto.Existencias;
-                return View("VistaErrorOrden");
+                return View("ErrorVistaOrden");
 
             }
             await _context.Database.ExecuteSqlInterpolatedAsync($"EXEC Salida.VentaProducto {o.Nombre}, {o.Apellido}, {o.Producto}, {o.Unidades}, {o.Correo}");

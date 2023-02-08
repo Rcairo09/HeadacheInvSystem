@@ -72,11 +72,6 @@ namespace HeadacheInvSystem.Controllers
                     {
                         return RedirectToAction("Details", new { id = p.ProductoId });
                     }
-                    else
-                    {
-                        ViewData["ErrorMessage"] = "El elemento ya existe";
-                        return View("VistaError");
-                    }
                 }
 
             }
