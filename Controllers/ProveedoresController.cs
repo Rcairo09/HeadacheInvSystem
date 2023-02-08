@@ -53,15 +53,17 @@ namespace HeadacheInvSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProveedorId,Nombre,Celular,Correo")] Proveedor proveedor)
+        public async Task<IActionResult> Create(ProveedoresSP p)
         {
-            if (ModelState.IsValid)
+            await _context.Database.ExecuteSqlInterpolatedAsync($"EXEC Entrada.RegistroProveedor {p.Nombre}, {p.Celular}, {p.Correo}");
+
+            if (_context.Proveedors.Any(x => x.Nombre == p.Nombre && x.Celular == p.Celular && x.Correo == p.Correo))
             {
-                _context.Add(proveedor);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewData["ErrorMessage"] = "El elemento ya existe";
+                return View("VistaErrorProveedores");
             }
-            return View(proveedor);
+
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Proveedores/Edit/5
