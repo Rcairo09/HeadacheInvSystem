@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lenovo\\Documents\\PROYECTOS VISUAL\\HeadacheInvSystem\\HeadacheInvSystem.csproj": {}
+    "C:\\Users\\Johnny\\Desktop\\Clases\\Base de datos II\\HeadacheInvSystem\\HeadacheInvSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lenovo\\Documents\\PROYECTOS VISUAL\\HeadacheInvSystem\\HeadacheInvSystem.csproj": {
+    "C:\\Users\\Johnny\\Desktop\\Clases\\Base de datos II\\HeadacheInvSystem\\HeadacheInvSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\Documents\\PROYECTOS VISUAL\\HeadacheInvSystem\\HeadacheInvSystem.csproj",
+        "projectUniqueName": "C:\\Users\\Johnny\\Desktop\\Clases\\Base de datos II\\HeadacheInvSystem\\HeadacheInvSystem.csproj",
         "projectName": "HeadacheInvSystem",
-        "projectPath": "C:\\Users\\lenovo\\Documents\\PROYECTOS VISUAL\\HeadacheInvSystem\\HeadacheInvSystem.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\Documents\\PROYECTOS VISUAL\\HeadacheInvSystem\\obj\\",
+        "projectPath": "C:\\Users\\Johnny\\Desktop\\Clases\\Base de datos II\\HeadacheInvSystem\\HeadacheInvSystem.csproj",
+        "packagesPath": "C:\\Users\\Johnny\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Johnny\\Desktop\\Clases\\Base de datos II\\HeadacheInvSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Johnny\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -88,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
