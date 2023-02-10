@@ -55,14 +55,12 @@ namespace HeadacheInvSystem.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProveedoresSP p)
         {
-            await _context.Database.ExecuteSqlInterpolatedAsync($"EXEC Entrada.RegistroProveedor {p.Nombre}, {p.Celular}, {p.Correo}");
-
-            if (_context.Proveedors.Any(x => x.Nombre == p.Nombre && x.Celular == p.Celular && x.Correo == p.Correo))
+            if (await _context.Proveedors.AnyAsync(x => x.Nombre == p.Nombre))
             {
-                ViewData["ErrorMessage"] = "El elemento ya existe";
+                ViewData["ErrorMessage"] = "Ya existe un proveedor con esta característica, por favor revise o elija otro nombre.";
                 return View("VistaErrorProveedores");
             }
-
+            await _context.Database.ExecuteSqlInterpolatedAsync($"EXEC Entrada.RegistroProveedor {p.Nombre}, {p.Celular}, {p.Correo}");
             return RedirectToAction(nameof(Index));
         }
 
