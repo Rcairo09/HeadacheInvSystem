@@ -6,90 +6,89 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HeadacheInvSystem.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace HeadacheInvSystem.Controllers
 {
-    [Authorize (Roles = "Comprador")]
-    public class ProveedoresController : Controller
+    public class CategoriasController : Controller
     {
         private readonly ContolInventarioContext _context;
 
-        public ProveedoresController(ContolInventarioContext context)
+        public CategoriasController(ContolInventarioContext context)
         {
             _context = context;
         }
 
-        // GET: Proveedores
+        // GET: Categorias
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Proveedors.ToListAsync());
+              return View(await _context.Categoria.ToListAsync());
         }
 
-        // GET: Proveedores/Details/5
+        // GET: Categorias/Details/5
         public async Task<IActionResult> Details(byte? id)
         {
-            if (id == null || _context.Proveedors == null)
+            if (id == null || _context.Categoria == null)
             {
                 return NotFound();
             }
 
-            var proveedor = await _context.Proveedors
-                .FirstOrDefaultAsync(m => m.ProveedorId == id);
-            if (proveedor == null)
+            var categorium = await _context.Categoria
+                .FirstOrDefaultAsync(m => m.CategoriaId == id);
+            if (categorium == null)
             {
                 return NotFound();
             }
 
-            return View(proveedor);
+            return View(categorium);
         }
 
-        // GET: Proveedores/Create
+        // GET: Categorias/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Proveedores/Create
+        // POST: Categorias/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ProveedoresSP p)
+        public async Task<IActionResult> Create(CategoriasSP c)
         {
-            if (await _context.Proveedors.AnyAsync(x => x.Nombre == p.Nombre))
+            if (await _context.Categoria.AnyAsync(x => x.NombreCategoria == c.NombreCategoria))
             {
-                ViewData["ErrorMessage"] = "Ya existe un proveedor con esta característica, por favor revise o elija otro nombre.";
-                return View("VistaErrorProveedores");
+                ViewData["ErrorMessage"] = "Ya existe una categoría con este nombre, por favor revise o elija otro nombre para el registro.";
+                return View("VistaErrorCategorias");
             }
-            await _context.Database.ExecuteSqlInterpolatedAsync($"EXEC Entrada.RegistroProveedor {p.Nombre}, {p.Celular}, {p.Correo}");
+
+            await _context.Database.ExecuteSqlInterpolatedAsync($"EXEC Entrada.Categorias {c.NombreCategoria}, {c.Descripcion}");
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Proveedores/Edit/5
+        // GET: Categorias/Edit/5
         public async Task<IActionResult> Edit(byte? id)
         {
-            if (id == null || _context.Proveedors == null)
+            if (id == null || _context.Categoria == null)
             {
                 return NotFound();
             }
 
-            var proveedor = await _context.Proveedors.FindAsync(id);
-            if (proveedor == null)
+            var categorium = await _context.Categoria.FindAsync(id);
+            if (categorium == null)
             {
                 return NotFound();
             }
-            return View(proveedor);
+            return View(categorium);
         }
 
-        // POST: Proveedores/Edit/5
+        // POST: Categorias/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(byte id, [Bind("ProveedorId,Nombre,Celular,Correo")] Proveedor proveedor)
+        public async Task<IActionResult> Edit(byte id, [Bind("CategoriaId,NombreCategoria,Descripcion")] Categorium categorium)
         {
-            if (id != proveedor.ProveedorId)
+            if (id != categorium.CategoriaId)
             {
                 return NotFound();
             }
@@ -98,12 +97,12 @@ namespace HeadacheInvSystem.Controllers
             {
                 try
                 {
-                    _context.Update(proveedor);
+                    _context.Update(categorium);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProveedorExists(proveedor.ProveedorId))
+                    if (!CategoriumExists(categorium.CategoriaId))
                     {
                         return NotFound();
                     }
@@ -114,49 +113,49 @@ namespace HeadacheInvSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(proveedor);
+            return View(categorium);
         }
 
-        // GET: Proveedores/Delete/5
+        // GET: Categorias/Delete/5
         public async Task<IActionResult> Delete(byte? id)
         {
-            if (id == null || _context.Proveedors == null)
+            if (id == null || _context.Categoria == null)
             {
                 return NotFound();
             }
 
-            var proveedor = await _context.Proveedors
-                .FirstOrDefaultAsync(m => m.ProveedorId == id);
-            if (proveedor == null)
+            var categorium = await _context.Categoria
+                .FirstOrDefaultAsync(m => m.CategoriaId == id);
+            if (categorium == null)
             {
                 return NotFound();
             }
 
-            return View(proveedor);
+            return View(categorium);
         }
 
-        // POST: Proveedores/Delete/5
+        // POST: Categorias/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(byte id)
         {
-            if (_context.Proveedors == null)
+            if (_context.Categoria == null)
             {
-                return Problem("Entity set 'ContolInventarioContext.Proveedors'  is null.");
+                return Problem("Entity set 'ContolInventarioContext.Categoria'  is null.");
             }
-            var proveedor = await _context.Proveedors.FindAsync(id);
-            if (proveedor != null)
+            var categorium = await _context.Categoria.FindAsync(id);
+            if (categorium != null)
             {
-                _context.Proveedors.Remove(proveedor);
+                _context.Categoria.Remove(categorium);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProveedorExists(byte id)
+        private bool CategoriumExists(byte id)
         {
-          return _context.Proveedors.Any(e => e.ProveedorId == id);
+          return _context.Categoria.Any(e => e.CategoriaId == id);
         }
     }
 }

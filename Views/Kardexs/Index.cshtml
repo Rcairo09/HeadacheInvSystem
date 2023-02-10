@@ -1,0 +1,89 @@
+﻿@model IEnumerable<HeadacheInvSystem.Models.Kardex>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entradas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salidas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Existencias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Compra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostoPromedio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Debe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Haber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Saldo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Producto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Entradas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salidas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Existencias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Compra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostoPromedio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Debe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Haber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Saldo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producto.ProductoId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.KardexId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.KardexId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.KardexId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

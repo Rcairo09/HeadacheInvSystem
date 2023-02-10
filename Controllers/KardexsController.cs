@@ -6,90 +6,88 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HeadacheInvSystem.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace HeadacheInvSystem.Controllers
 {
-    [Authorize (Roles = "Comprador")]
-    public class ProveedoresController : Controller
+    public class KardexsController : Controller
     {
         private readonly ContolInventarioContext _context;
 
-        public ProveedoresController(ContolInventarioContext context)
+        public KardexsController(ContolInventarioContext context)
         {
             _context = context;
         }
 
-        // GET: Proveedores
+        // GET: Kardexs
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Proveedors.ToListAsync());
+            var contolInventarioContext = _context.Kardices.Include(k => k.Producto);
+            return View(await contolInventarioContext.ToListAsync());
         }
 
-        // GET: Proveedores/Details/5
+        // GET: Kardexs/Details/5
         public async Task<IActionResult> Details(byte? id)
         {
-            if (id == null || _context.Proveedors == null)
+            if (id == null || _context.Kardices == null)
             {
                 return NotFound();
             }
 
-            var proveedor = await _context.Proveedors
-                .FirstOrDefaultAsync(m => m.ProveedorId == id);
-            if (proveedor == null)
+            var kardex = await _context.Kardices
+                .Include(k => k.Producto)
+                .FirstOrDefaultAsync(m => m.KardexId == id);
+            if (kardex == null)
             {
                 return NotFound();
             }
 
-            return View(proveedor);
+            return View(kardex);
         }
 
-        // GET: Proveedores/Create
+        // GET: Kardexs/Create
         public IActionResult Create()
         {
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "ProductoId", "ProductoNombre");
             return View();
         }
 
-        // POST: Proveedores/Create
+        // POST: Kardexs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ProveedoresSP p)
+        public async Task<IActionResult> Create(KardexSP d)
         {
-            if (await _context.Proveedors.AnyAsync(x => x.Nombre == p.Nombre))
-            {
-                ViewData["ErrorMessage"] = "Ya existe un proveedor con esta característica, por favor revise o elija otro nombre.";
-                return View("VistaErrorProveedores");
-            }
-            await _context.Database.ExecuteSqlInterpolatedAsync($"EXEC Entrada.RegistroProveedor {p.Nombre}, {p.Celular}, {p.Correo}");
+            await _context.Database.ExecuteSqlInterpolatedAsync($"EXEC ControlM.Documento {d.Producto}, {d.Unidades}");
             return RedirectToAction(nameof(Index));
+
         }
 
-        // GET: Proveedores/Edit/5
+        // GET: Kardexs/Edit/5
         public async Task<IActionResult> Edit(byte? id)
         {
-            if (id == null || _context.Proveedors == null)
+            if (id == null || _context.Kardices == null)
             {
                 return NotFound();
             }
 
-            var proveedor = await _context.Proveedors.FindAsync(id);
-            if (proveedor == null)
+            var kardex = await _context.Kardices.FindAsync(id);
+            if (kardex == null)
             {
                 return NotFound();
             }
-            return View(proveedor);
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "ProductoId", "ProductoId", kardex.ProductoId);
+            return View(kardex);
         }
 
-        // POST: Proveedores/Edit/5
+        // POST: Kardexs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(byte id, [Bind("ProveedorId,Nombre,Celular,Correo")] Proveedor proveedor)
+        public async Task<IActionResult> Edit(byte id, [Bind("KardexId,Fecha,ProductoId,Entradas,Salidas,Existencias,Compra,CostoPromedio,Debe,Haber,Saldo")] Kardex kardex)
         {
-            if (id != proveedor.ProveedorId)
+            if (id != kardex.KardexId)
             {
                 return NotFound();
             }
@@ -98,12 +96,12 @@ namespace HeadacheInvSystem.Controllers
             {
                 try
                 {
-                    _context.Update(proveedor);
+                    _context.Update(kardex);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProveedorExists(proveedor.ProveedorId))
+                    if (!KardexExists(kardex.KardexId))
                     {
                         return NotFound();
                     }
@@ -114,49 +112,51 @@ namespace HeadacheInvSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(proveedor);
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "ProductoId", "ProductoId", kardex.ProductoId);
+            return View(kardex);
         }
 
-        // GET: Proveedores/Delete/5
+        // GET: Kardexs/Delete/5
         public async Task<IActionResult> Delete(byte? id)
         {
-            if (id == null || _context.Proveedors == null)
+            if (id == null || _context.Kardices == null)
             {
                 return NotFound();
             }
 
-            var proveedor = await _context.Proveedors
-                .FirstOrDefaultAsync(m => m.ProveedorId == id);
-            if (proveedor == null)
+            var kardex = await _context.Kardices
+                .Include(k => k.Producto)
+                .FirstOrDefaultAsync(m => m.KardexId == id);
+            if (kardex == null)
             {
                 return NotFound();
             }
 
-            return View(proveedor);
+            return View(kardex);
         }
 
-        // POST: Proveedores/Delete/5
+        // POST: Kardexs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(byte id)
         {
-            if (_context.Proveedors == null)
+            if (_context.Kardices == null)
             {
-                return Problem("Entity set 'ContolInventarioContext.Proveedors'  is null.");
+                return Problem("Entity set 'ContolInventarioContext.Kardices'  is null.");
             }
-            var proveedor = await _context.Proveedors.FindAsync(id);
-            if (proveedor != null)
+            var kardex = await _context.Kardices.FindAsync(id);
+            if (kardex != null)
             {
-                _context.Proveedors.Remove(proveedor);
+                _context.Kardices.Remove(kardex);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProveedorExists(byte id)
+        private bool KardexExists(byte id)
         {
-          return _context.Proveedors.Any(e => e.ProveedorId == id);
+          return _context.Kardices.Any(e => e.KardexId == id);
         }
     }
 }
