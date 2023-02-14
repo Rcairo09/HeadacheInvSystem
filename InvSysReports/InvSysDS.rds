@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="InvSysDS">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=inventariosys.eastus.cloudapp.azure.com;Initial Catalog=ContolInventario</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>76ab52f6-6f8d-47b5-bd4e-97ea0541b6a9</DataSourceID>
+</RptDataSource>

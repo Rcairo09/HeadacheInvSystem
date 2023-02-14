@@ -1,12 +1,18 @@
 ﻿@model HeadacheInvSystem.Models.Producto
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Eliminar";
 }
 
 <h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
+@if (ViewBag.AllowDelete)
+{
+    <h3>¿Estás seguro que quieres elimnar este producto?</h3>
+}
+else
+{
+    <h3 class="text-danger">Este elemento no se puede eliminar<br> Tiene datos relacionados en la tabla Kardex</h3>
+}
 <div>
     <h4>Producto</h4>
     <hr />
@@ -27,19 +33,22 @@
             @Html.DisplayNameFor(model => model.Categoria)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Categoria.CategoriaId)
+            @Html.DisplayFor(model => model.Categoria.NombreCategoria)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Proveedor)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Proveedor.ProveedorId)
+            @Html.DisplayFor(model => model.Proveedor.Nombre)
         </dd>
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="ProductoId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        @if (ViewBag.AllowDelete)
+        {
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+        } |
+        <a asp-action="Index">Regresar</a>
     </form>
 </div>

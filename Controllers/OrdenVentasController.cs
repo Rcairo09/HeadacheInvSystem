@@ -97,7 +97,7 @@ namespace HeadacheInvSystem.Controllers
             {
                 return NotFound();
             }
-
+            ModelState.Remove("Producto");
             if (ModelState.IsValid)
             {
                 try

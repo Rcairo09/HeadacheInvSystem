@@ -76,7 +76,7 @@ namespace HeadacheInvSystem.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProductoId"] = new SelectList(_context.Productos, "ProductoId", "ProductoId", kardex.ProductoId);
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "ProductoId", "ProductoNombre", kardex.ProductoId);
             return View(kardex);
         }
 
@@ -112,7 +112,7 @@ namespace HeadacheInvSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductoId"] = new SelectList(_context.Productos, "ProductoId", "ProductoId", kardex.ProductoId);
+            ViewData["ProductoId"] = new SelectList(_context.Productos, "ProductoId", "ProductoNombre", kardex.ProductoId);
             return View(kardex);
         }
 

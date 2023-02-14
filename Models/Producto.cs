@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace HeadacheInvSystem.Models
 {
@@ -10,11 +11,15 @@ namespace HeadacheInvSystem.Models
             Kardices = new HashSet<Kardex>();
             OrdenVenta = new HashSet<OrdenVentum>();
         }
-
+        [DisplayName("Id")]
         public byte ProductoId { get; set; }
+        [DisplayName("Categoría")]
         public byte CategoriaId { get; set; }
+        [DisplayName("Proveedor")]
         public byte ProveedorId { get; set; }
+        [DisplayName("Producto")]
         public string ProductoNombre { get; set; } = null!;
+        [DisplayName("Precio Unitario")]
         public decimal ProductoPrecioUnitario { get; set; }
 
         public virtual Categorium Categoria { get; set; } = null!;

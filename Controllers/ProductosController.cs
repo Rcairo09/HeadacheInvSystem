@@ -75,7 +75,7 @@ namespace HeadacheInvSystem.Controllers
                 }
 
             }
-            ViewData["ErrorMessage"] = "Ya existe un elemento con este nombre. Intente registrándolo bajo otro nombre, por favor.";
+            ViewData["ErrorMessage"] = "Ya existe un elemento con este nombre.Intente registrándolo bajo otro nombre, por favor.";
             return View("VistaErrorProductos");
         }
 
@@ -92,6 +92,8 @@ namespace HeadacheInvSystem.Controllers
             {
                 return NotFound();
             }
+            List<Kardex> kardexs = await _context.Kardices.Where(d => d.ProductoId.Equals(id)).ToListAsync();
+            ViewBag.AllowEdit = !kardexs.Any();
             ViewData["CategoriaId"] = new SelectList(_context.Categoria, "CategoriaId", "NombreCategoria", producto.CategoriaId);
             ViewData["ProveedorId"] = new SelectList(_context.Proveedors, "ProveedorId", "Nombre", producto.ProveedorId);
             return View(producto);
@@ -104,6 +106,8 @@ namespace HeadacheInvSystem.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(byte id, [Bind("ProductoId,CategoriaId,ProveedorId,ProductoNombre,ProductoPrecioUnitario")] Producto producto)
         {
+            ModelState.Remove("Categoria");
+            ModelState.Remove("Proveedor");
             if (id != producto.ProductoId)
             {
                 return NotFound();
@@ -150,7 +154,8 @@ namespace HeadacheInvSystem.Controllers
             {
                 return NotFound();
             }
-
+            List<Kardex> kardexs = await _context.Kardices.Where(d => d.ProductoId.Equals(id)).ToListAsync();
+            ViewBag.AllowDelete = !kardexs.Any();
             return View(producto);
         }
 

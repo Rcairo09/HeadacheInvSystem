@@ -131,7 +131,8 @@ namespace HeadacheInvSystem.Controllers
             {
                 return NotFound();
             }
-
+            List<Producto> producto = await _context.Productos.Where(d => d.ProveedorId.Equals(id)).ToListAsync();
+            ViewBag.AllowDelete = !producto.Any();
             return View(proveedor);
         }
 

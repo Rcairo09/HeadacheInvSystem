@@ -42,11 +42,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Producto.ProductoNombre)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OrdenId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.OrdenId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrdenId">Delete</a>
-            </td>
         </tr>
 }
     </tbody>

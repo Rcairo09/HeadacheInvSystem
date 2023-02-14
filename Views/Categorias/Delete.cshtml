@@ -1,14 +1,20 @@
 ﻿@model HeadacheInvSystem.Models.Categorium
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Eliminar";
 }
 
 <h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
+@if (ViewBag.AllowDelete)
+{
+    <h3>¿Estás seguro que quieres elimnar esta categoría?</h3>
+}
+else
+{
+    <h3 class="text-danger">No se puede eliminar<br>La categoría tiene datos relacionados con la tabla Producto</h3>
+}
 <div>
-    <h4>Categorium</h4>
+    <h4>Categoría</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -27,7 +33,10 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="CategoriaId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        @if (ViewBag.AllowDelete)
+        {
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+        } |
+        <a asp-action="Index">Regresar</a>
     </form>
 </div>
