@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace HeadacheInvSystem.Controllers
 {
-    [Authorize (Roles = "Comprador")]
+    [Authorize (Roles = "Comprador,Administrador")]
     public class ProveedoresController : Controller
     {
         private readonly ContolInventarioContext _context;

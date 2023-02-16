@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+
 using HeadacheInvSystem.Models;
 
 namespace HeadacheInvSystem.Controllers
 {
+    [Authorize(Roles = "Comprador,Vendedor,Administrador")]
     public class KardexsController : Controller
     {
         private readonly ContolInventarioContext _context;
