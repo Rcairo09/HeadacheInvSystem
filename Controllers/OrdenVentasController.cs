@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HeadacheInvSystem.Models;
+using System.Net;
 
 namespace HeadacheInvSystem.Controllers
 {
@@ -64,6 +65,27 @@ namespace HeadacheInvSystem.Controllers
                 ViewData["ErrorMessage"] = "No hay suficientes unidades de este producto, para realizar la compra, solo hay: " + producto.Existencias;
                 return View("ErrorVistaOrden");
 
+            }
+            var exist = producto.Existencias - o.Unidades == 0;
+            if (exist)
+            {
+                try
+                {
+                    await _context.Database.ExecuteSqlInterpolatedAsync($"EXEC Salida.VentaProducto {o.Nombre}, {o.Apellido}, {o.Producto}, {o.Unidades}, {o.Correo}");
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (ArgumentNullException ex)
+                {
+                    //code specifically for a ArgumentNullException
+                }
+                catch (WebException ex)
+                {
+                    //code specifically for a WebException
+                }
+                catch (Exception ex)
+                {
+                    //code for any other type of exception
+                }
             }
             await _context.Database.ExecuteSqlInterpolatedAsync($"EXEC Salida.VentaProducto {o.Nombre}, {o.Apellido}, {o.Producto}, {o.Unidades}, {o.Correo}");
             return RedirectToAction(nameof(Index));
