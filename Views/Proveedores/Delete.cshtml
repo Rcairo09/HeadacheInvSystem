@@ -7,11 +7,15 @@
 <h1>Eliminar</h1>
 @if (ViewBag.AllowDelete)
 {
-    <h3>¿Estás seguro que quieres elimnar este Proveedor?</h3>
+    <div class="alert alert-danger" role="alert">
+        ¿Estás seguro que quieres elimnar este Proveedor?
+    </div>
 }
 else
 {
-    <h3 class="text-danger">No se puede eliminar<br>El Proveedor tiene datos relacionados con la tabla Producto</h3>
+    <div class="alert alert-danger" role="alert">
+        No se puede eliminar<br>El Proveedor tiene datos relacionados con la tabla Producto
+    </div>
 }
 <div>
     <h4>Proveedor</h4>

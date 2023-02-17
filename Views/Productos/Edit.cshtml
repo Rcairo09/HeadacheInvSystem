@@ -46,7 +46,9 @@
 }
 else
 {
-    <h3 class="text-danger">Este elemento no se puede editar<br> Tiene datos relacionados en la tabla Kardex</h3>
+    <div class="alert alert-danger" role="alert">
+        Este elemento no se puede editar<br> Tiene datos relacionados en la tabla Kardex
+    </div>
     <div class="row">
         <div class="col-md-4">
             <form asp-action="Edit">

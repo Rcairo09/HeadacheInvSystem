@@ -7,11 +7,15 @@
 <h1>Delete</h1>
 @if (ViewBag.AllowDelete)
 {
-    <h3>¿Estás seguro que quieres elimnar este producto?</h3>
+    <div class="alert alert-danger" role="alert">
+        ¿Estás seguro que quieres elimnar este producto?
+    </div>
 }
 else
 {
-    <h3 class="text-danger">Este elemento no se puede eliminar<br> Tiene datos relacionados en la tabla Kardex</h3>
+    <div class="alert alert-danger" role="alert">
+        Este elemento no se puede eliminar<br> Tiene datos relacionados en la tabla Kardex
+    </div>
 }
 <div>
     <h4>Producto</h4>
