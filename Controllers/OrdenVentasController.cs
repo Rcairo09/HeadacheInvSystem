@@ -6,10 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HeadacheInvSystem.Models;
+<<<<<<< HEAD
 using System.Net;
+=======
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
+>>>>>>> 2937f5a59dd3eca80e27c682aecf744aedeec090
 
 namespace HeadacheInvSystem.Controllers
 {
+    [Authorize(Roles = "Vendedor,Administrador")]
     public class OrdenVentasController : Controller
     {
         private readonly ContolInventarioContext _context;
