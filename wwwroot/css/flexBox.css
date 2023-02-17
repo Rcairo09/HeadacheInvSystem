@@ -36,3 +36,14 @@
         background-color:ghostwhite;
         
     }
+img {
+    background-image: url("../img/logo.jpg");
+    background-repeat: no-repeat;
+    height: 350px;
+    align-content: normal;
+    width: 350px;
+    background-repeat: no-repeat;
+}
+img:hover {
+        transform: scaleX(-1);
+    }

@@ -46,3 +46,23 @@ header{
     color:white;
     font-size:small;
 }
+.form-floating{
+    margin:1em;
+    padding:0.2em;
+}
+/*Borde de la tabla*/
+.pb-3 {
+    padding-bottom: 1rem !important;
+    border-style: solid;
+    color:white;
+}
+
+th, tr{
+    border-style:inset;
+}
+/*label de user and password*/
+.form-label {
+    margin-bottom: 1px;
+    color: black;
+    text-transform:capitalize;
+}
