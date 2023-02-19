@@ -1485,8 +1485,8 @@ FROM            ControlM.Kardex INNER JOIN
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
             <Top>0.43in</Top>
-            <Height>1.06708in</Height>
-            <Width>14.13363in</Width>
+            <Height>1.06709in</Height>
+            <Width>14.13364in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <FontFamily />
@@ -1498,15 +1498,30 @@ FROM            ControlM.Kardex INNER JOIN
                 <ChartMember>
                   <Group Name="Chart11_CategoryGroup">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!Producto_Nombre.Value</GroupExpression>
+                      <GroupExpression>=Fields!ProductoID.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!Producto_Nombre.Value</Value>
+                      <Value>=Fields!ProductoID.Value</Value>
                     </SortExpression>
                   </SortExpressions>
-                  <Label>=Fields!Producto_Nombre.Value</Label>
+                  <ChartMembers>
+                    <ChartMember>
+                      <Group Name="Chart11_CategoryGroup1">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!Producto_Nombre.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!Producto_Nombre.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <Label>=Fields!Producto_Nombre.Value</Label>
+                    </ChartMember>
+                  </ChartMembers>
+                  <Label>=Fields!ProductoID.Value</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartCategoryHierarchy>
@@ -1526,12 +1541,7 @@ FROM            ControlM.Kardex INNER JOIN
                         <Y>=Sum(Fields!Existencias.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
-                        <Style>
-                          <FontSize>16pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                        </Style>
-                        <UseValueAsLabel>true</UseValueAsLabel>
-                        <Visible>true</Visible>
+                        <Style />
                       </ChartDataLabel>
                       <Style />
                       <ChartMarker>
@@ -1866,7 +1876,7 @@ FROM            ControlM.Kardex INNER JOIN
         <Height>7.60458in</Height>
         <Style />
       </Body>
-      <Width>14.13363in</Width>
+      <Width>14.13364in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>

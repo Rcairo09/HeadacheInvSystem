@@ -65,7 +65,7 @@ namespace HeadacheInvSystem.Controllers
             var producto = _context.Kardices.SingleOrDefault(k => k.ProductoId == o.Producto);
             if (producto.Existencias < o.Unidades)
             {
-                ViewData["ErrorMessage"] = "No hay suficientes unidades de este producto, para realizar la compra, solo hay: " + producto.Existencias;
+                ViewData["ErrorMessage"] = "No hay suficientes unidades de este producto, para realizar la venta, solo hay: " + producto.Existencias;
                 return View("ErrorVistaOrden");
 
             }
